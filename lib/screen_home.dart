@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_toe/screen_game.dart';
 
 class ScreenHome extends StatefulWidget {
   const ScreenHome({super.key});
@@ -101,7 +102,19 @@ class _ScreenHomeState extends State<ScreenHome> {
               height: 20,
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                if (_globalKey.currentState!.validate()) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ScreenGame(
+                        player1: player1controller.text,
+                        player2: player2controller.text,
+                      ),
+                    ),
+                  );
+                }
+              },
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.green,
